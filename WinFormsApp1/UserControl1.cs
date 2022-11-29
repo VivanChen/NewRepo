@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace WinFormsApp1
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            this.pictureBox1.Image = Image.FromFile(@"C:\Users\I005231\source\repos\WinFormsApp1\WinFormsApp1\Image\Lodeing.gif");
+            this.pictureBox1.Image = Image.FromFile(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"],"Lodeing.gif"));
             this.label1.Text = "檔案讀取中...請稍後";
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace WinFormsApp1.Controller
         public List<School> Getschools()
         {
             List<School> newschools = new List<School>();
-            StreamReader reader = new StreamReader(@"C:\Users\I005231\source\repos\WinFormsApp1\WinFormsApp1\Model\1080416臺北市各級學校分布圖.csv", Encoding.UTF8);
+            StreamReader reader = new StreamReader(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"],"1080416臺北市各級學校分布圖.csv"), Encoding.UTF8);
             while (reader.ReadLine() != null)
             {
                 if (string.IsNullOrEmpty(reader.ReadLine())) { continue; }
