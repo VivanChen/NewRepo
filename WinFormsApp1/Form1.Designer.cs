@@ -59,10 +59,11 @@ namespace WinFormsApp1
             this.台灣商家黃頁ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.天氣查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.旅遊景點查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.旅遊景點查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -110,6 +111,7 @@ namespace WinFormsApp1
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button6);
             this.panel5.Controls.Add(this.panel1);
             this.panel5.Controls.Add(this.panel2);
             this.panel5.Controls.Add(this.panel3);
@@ -347,9 +349,16 @@ namespace WinFormsApp1
             // 天氣查詢ToolStripMenuItem
             // 
             this.天氣查詢ToolStripMenuItem.Name = "天氣查詢ToolStripMenuItem";
-            this.天氣查詢ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.天氣查詢ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.天氣查詢ToolStripMenuItem.Text = "天氣查詢";
             this.天氣查詢ToolStripMenuItem.Click += new System.EventHandler(this.天氣查詢ToolStripMenuItem_Click_1);
+            // 
+            // 旅遊景點查詢ToolStripMenuItem
+            // 
+            this.旅遊景點查詢ToolStripMenuItem.Name = "旅遊景點查詢ToolStripMenuItem";
+            this.旅遊景點查詢ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.旅遊景點查詢ToolStripMenuItem.Text = "旅遊景點查詢";
+            this.旅遊景點查詢ToolStripMenuItem.Click += new System.EventHandler(this.旅遊景點查詢ToolStripMenuItem_Click);
             // 
             // 設定ToolStripMenuItem
             // 
@@ -374,12 +383,15 @@ namespace WinFormsApp1
             this.退出程序ToolStripMenuItem.Text = "退出程序";
             this.退出程序ToolStripMenuItem.Click += new System.EventHandler(this.退出程序ToolStripMenuItem_Click_1);
             // 
-            // 旅遊景點查詢ToolStripMenuItem
+            // button6
             // 
-            this.旅遊景點查詢ToolStripMenuItem.Name = "旅遊景點查詢ToolStripMenuItem";
-            this.旅遊景點查詢ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.旅遊景點查詢ToolStripMenuItem.Text = "旅遊景點查詢";
-            this.旅遊景點查詢ToolStripMenuItem.Click += new System.EventHandler(this.旅遊景點查詢ToolStripMenuItem_Click);
+            this.button6.Location = new System.Drawing.Point(79, 420);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(148, 37);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Word 套版";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
@@ -443,6 +455,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.ToolStripMenuItem 登出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出程序ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 旅遊景點查詢ToolStripMenuItem;
+        private System.Windows.Forms.Button button6;
     }
 }
 

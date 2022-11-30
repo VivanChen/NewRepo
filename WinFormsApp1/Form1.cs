@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -180,6 +181,7 @@ namespace WinFormsApp1
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
+            if (NewSchool.Count == 0) { Getschools(); }
             string phone = textBox2.Text;
             string patte = @"^02-[0-9]{4}-[0-9]{4}";
             bool check = Regex.IsMatch(phone, patte);
@@ -357,6 +359,24 @@ namespace WinFormsApp1
             this.Hide();
             f.ShowDialog();
             this.Dispose();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var docxBytes = Function_Word.GenerateDocx(File.ReadAllBytes(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"], "word1.docx")),
+                new Dictionary<string, string>()
+                {
+                    ["ParserTag1"] = "共同科目",
+                    ["ParserTag2"] = DateTime.Now.ToString("yyyy-MM-dd HH"),
+                    ["ParserTag3"] = "001",
+                    ["ParserTag4"] = DateTime.Now.ToString("yyyy-MM-dd HH"),
+                    ["ParserTag5"] = "友邦人壽"
+
+                });
+            File.WriteAllBytes(
+                Path.Combine(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"]), $"套表測試-{DateTime.Now:HHmmss}.docx"),
+                docxBytes);
+
         }
         //TODo
         //1.修改功能

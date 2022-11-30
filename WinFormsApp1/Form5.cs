@@ -27,24 +27,26 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private async void Form5_Load(object sender, EventArgs e)
         {
+            pictureBox1.Visible = true;
+            pictureBox1.Refresh();
             if (!AccountController.Validate_account(Account, out string message))
             {
                 MessageBox.Show("帳號密碼錯誤，請重新登入");
-                Form3 f = new Form3();//產生Form1的物件，才可以使用它所提供的Method
+                Form3 f = new Form3();
                 this.Hide();
                 f.ShowDialog();
                 this.Dispose();
             }
             else label1.Text = "您好 : " + Account.Account;
-            rootobject = sightseeingController.Getapi();
+            rootobject =await sightseeingController.GetapiAsync();
             var query =rootobject.XML_Head.Infos.Info.Where(a=>a.Region!=null).GroupBy(a => a.Region).Select(a => a.Key);
             foreach (var item in query)
             {
                 comboBox1.Items.Add(item);
             }
-
+            pictureBox1.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
