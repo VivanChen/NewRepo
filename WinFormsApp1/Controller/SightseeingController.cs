@@ -16,11 +16,13 @@ namespace WinFormsApp1.Controller
     public class SightseeingController
     {
         public static Rootobject rootobject { get;  set; }
-        public async Task<Rootobject> GetapiAsync()
+        public Rootobject Getapi()
         {
             var tasks = new List<Task<string>>();
             HttpClientHelper httpClient = new HttpClientHelper();
-            return await httpClient.Get(ConfigurationManager.AppSettings["Api_sightseeing"]);;
+            string result = httpClient.Get(ConfigurationManager.AppSettings["Api_sightseeing"]);
+            rootobject = JsonConvert.DeserializeObject<Rootobject>(result);
+            return rootobject;
         }
     }
 }

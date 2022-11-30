@@ -21,7 +21,7 @@ namespace WinFormsApp1
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            this.pictureBox1.Image = Image.FromFile(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Image"],"Lodeing.gif"));
+            this.pictureBox1.Image = Image.FromFile(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"],"Lodeing.gif"));
             this.label1.Text = "檔案讀取中...請稍後";
         }
 

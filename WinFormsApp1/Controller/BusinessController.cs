@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using WinFormsApp1.Function;
 using WinFormsApp1.Model;
 
 
@@ -17,15 +16,7 @@ namespace WinFormsApp1.Controller
         List<Business> NewBusinesses = new List<Business>();
         public List<Business> GetBusinesses()
         {
-
-            string zipFile = Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"], ConfigurationManager.AppSettings["Business_data"]+"ZIP"); // 待解壓縮的檔案
-            string outDir = Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"]);  // 解壓縮目的目錄
-            if (!File.Exists(Path.Combine(outDir, ConfigurationManager.AppSettings["Business_data"]+"CSV")))
-            {
-                Function_Zip.UnzipToDirectory(zipFile, outDir, true);
-            }
-
-            using (StreamReader streamReader = new StreamReader(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"], ConfigurationManager.AppSettings["Business_data"]+"CSV"), Encoding.UTF8))
+            using (StreamReader streamReader = new StreamReader(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"], ConfigurationManager.AppSettings["Business_data"]), Encoding.UTF8))
             {
                 while (streamReader.Peek() >= 0)//由於該CSV檔應有格式編寫問題或是換行符號有少，若用ReadLine()判斷是否為Null來判斷是否讀取下一筆會有異常，筆數會少，改用Peek()來判斷
                 {
