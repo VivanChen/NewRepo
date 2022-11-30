@@ -49,10 +49,10 @@ namespace WinFormsApp1
             this.台灣商家黃頁ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.天氣查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.旅遊景點查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.旅遊景點查詢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -265,9 +265,16 @@ namespace WinFormsApp1
             // 天氣查詢ToolStripMenuItem
             // 
             this.天氣查詢ToolStripMenuItem.Name = "天氣查詢ToolStripMenuItem";
-            this.天氣查詢ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.天氣查詢ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.天氣查詢ToolStripMenuItem.Text = "天氣查詢";
             this.天氣查詢ToolStripMenuItem.Click += new System.EventHandler(this.天氣查詢ToolStripMenuItem_Click);
+            // 
+            // 旅遊景點查詢ToolStripMenuItem
+            // 
+            this.旅遊景點查詢ToolStripMenuItem.Name = "旅遊景點查詢ToolStripMenuItem";
+            this.旅遊景點查詢ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.旅遊景點查詢ToolStripMenuItem.Text = "旅遊景點查詢";
+            this.旅遊景點查詢ToolStripMenuItem.Click += new System.EventHandler(this.旅遊景點查詢ToolStripMenuItem_Click);
             // 
             // 功能ToolStripMenuItem
             // 
@@ -291,13 +298,6 @@ namespace WinFormsApp1
             this.退出程序ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.退出程序ToolStripMenuItem.Text = "退出程序";
             this.退出程序ToolStripMenuItem.Click += new System.EventHandler(this.退出程序ToolStripMenuItem_Click);
-            // 
-            // 旅遊景點查詢ToolStripMenuItem
-            // 
-            this.旅遊景點查詢ToolStripMenuItem.Name = "旅遊景點查詢ToolStripMenuItem";
-            this.旅遊景點查詢ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.旅遊景點查詢ToolStripMenuItem.Text = "旅遊景點查詢";
-            this.旅遊景點查詢ToolStripMenuItem.Click += new System.EventHandler(this.旅遊景點查詢ToolStripMenuItem_Click);
             // 
             // Form2
             // 

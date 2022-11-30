@@ -25,13 +25,6 @@ namespace WinFormsApp1
         }
         BusinessController Controller = new BusinessController();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form1 f = new Form1(Account);//產生Form1的物件，才可以使用它所提供的Method
-            this.Hide();
-            f.ShowDialog();
-            this.Dispose();
-        }
         private void Form2_Load(object sender, EventArgs e)
         {
             if (!AccountController.Validate_account(Account, out string message))
@@ -107,10 +100,21 @@ namespace WinFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
+            userControl11.Visible = true;//主執行緒
+            userControl11.Refresh();
+
+            await Task.Run(() =>//建立獨立執行緒去執行讀取檔案 (awit關鍵字)
+            {
+                if (NewBusinesses.Count == 0)
+                {
+                    NewBusinesses = Controller.GetBusinesses();
+                }
+            });
             var query = NewBusinesses.Where(a => a.Business_name.ToUpper().Trim().Contains(textBox1.Text.ToUpper().Trim()));
             ShowText(query);
+            userControl11.Visible = false;
         }
         /// <summary>
         /// 自動編號

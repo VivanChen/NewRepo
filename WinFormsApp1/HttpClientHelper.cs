@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using static WinFormsApp1.Model.Sightseeing;
 
 namespace WinFormsApp1
 {
@@ -13,8 +16,7 @@ namespace WinFormsApp1
         private static HttpClient client = null;
         HttpClientHandler handler = new HttpClientHandler();
         public HttpClientHelper()
-        {
-            handler.UseProxy = false;//不加這個會非常慢
+        {          
             client = new HttpClient() { BaseAddress = new Uri("https://www.google.com/") };
 
             //帮HttpClient热身
@@ -85,13 +87,27 @@ namespace WinFormsApp1
                 return null;
             }
         }
-
-        public string Get(string url)
+        /// <summary>
+        /// 使用HttpClient下載大型檔案時會異常緩慢
+        /// 利用非同步將檔案下載成流數據(Steam)
+        /// 讀取後再轉為物件
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public async Task<Rootobject> Get(string url)
         {
             try
             {
-                var responseString = client.GetStringAsync(url);
-                return responseString.Result;
+                var responseString = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+                responseString.EnsureSuccessStatusCode();
+                using (var stream = await responseString.Content.ReadAsStreamAsync())
+                using (var streamReader = new StreamReader(stream))
+                using (var jsonReader = new JsonTextReader(streamReader))
+                {
+                    var serializer = new JsonSerializer();
+                    Rootobject p = serializer.Deserialize<Rootobject>(jsonReader);
+                    return p;
+                }
             }
             catch (Exception ex)
             {
