@@ -10,7 +10,7 @@ namespace WinFormsApp1.Controller
     public class AccountsController:Accounts
     {
         string account = "VIVAN";
-       string password = "123456";
+        string password = "123456";
         string Otp = "";
         public bool Validate_account(Accounts accounts,out string message)
         {

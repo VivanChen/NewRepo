@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Spire.Doc;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Controller;
 using WinFormsApp1.Function;
@@ -363,6 +362,11 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
+            // 目錄不存在就要建立
+            if (!Directory.Exists(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"])))
+            {
+                Directory.CreateDirectory(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"]));
+            }
             var docxBytes = Function_Word.GenerateDocx(File.ReadAllBytes(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Mode"], "word1.docx")),
                 new Dictionary<string, string>()
                 {
@@ -377,6 +381,17 @@ namespace WinFormsApp1
                 Path.Combine(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"]), $"套表測試-{DateTime.Now:HHmmss}.docx"),
                 docxBytes);
 
+            Document doc = new Document();
+            DirectoryInfo info = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["DIR_Temp"]));
+            FileInfo[] files = info.GetFiles();
+            foreach (FileInfo item in files)
+            {
+                doc.LoadFromFile(item.FullName);     
+                PrintDocument printDoc = doc.PrintDocument;
+                printDoc.Print();
+            }
+            
+            
         }
         //TODo
         //1.修改功能
